@@ -1,0 +1,15 @@
+- name: This playbook will copy the files mentioned in list to target machines
+  hosts: all
+  vars:
+    files_tobe_copied:
+       - play2.yml
+       - play1.yml
+       - centos-sshd-passwordless
+  tasks:
+    - name: Create a custom folder
+      shell: mkdir -p /home/test/day1
+    - name: copy files to other machines
+      copy: src="{{item}}" dest="/home/test/day1/{{item}}"
+      with_list: "{{files_tobe_copied}}"
+#    - name: copy directory
+#      copy: src=centos-sshd-passwordless dest=/home/test/day1

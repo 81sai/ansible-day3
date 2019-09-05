@@ -1,0 +1,4 @@
+- name: this playbook demonstrates invoking our custom nginx ansible role
+  hosts: all
+  roles:
+    - nginx1
